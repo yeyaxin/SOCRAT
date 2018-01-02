@@ -32,6 +32,13 @@ module.exports = charts = new Module
       'app_analysis_charts_dataTransform': require 'scripts/analysis/Charts/ChartsDataTransform.service.coffee'
       'app_analysis_charts_checkTime': require 'scripts/analysis/Charts/ChartsCheckTime.service.coffee'
 
+      'app_analysis_charts_VegaBarChart': require 'scripts/analysis/Charts/ChartsVegaBarChart.service.coffee'
+      'app_analysis_charts_VegaLineChart': require 'scripts/analysis/Charts/ChartsVegaLineChart.service.coffee'
+      'app_analysis_charts_VegaHistogram': require 'scripts/analysis/Charts/ChartsVegaHistogram.service.coffee'
+      'app_analysis_charts_VegaScatterplot': require 'scripts/analysis/Charts/ChartsVegaScatterplot.service.coffee'
+      'app_analysis_charts_VegaStepChart': require 'scripts/analysis/Charts/ChartsVegaStepChart.service.coffee'
+      'app_analysis_charts_VegaAreaChart': require 'scripts/analysis/Charts/ChartsVegaAreaChart.service.coffee'
+
     controllers:
       'ChartsSidebarCtrl': require 'scripts/analysis/Charts/ChartsSidebarCtrl.controller.coffee'
       'ChartsMainCtrl': require 'scripts/analysis/Charts/ChartsMainCtrl.controller.coffee'

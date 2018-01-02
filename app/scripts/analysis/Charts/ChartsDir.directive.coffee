@@ -19,7 +19,13 @@ module.exports = class ChartsDir extends BaseDirective
           'app_analysis_charts_tilfordTree',
           'app_analysis_charts_trellisChart',
           'app_analysis_charts_treemap',
-          'app_analysis_charts_checkTime'
+          'app_analysis_charts_checkTime',
+          'app_analysis_charts_VegaBarChart',
+          'app_analysis_charts_VegaLineChart',
+          'app_analysis_charts_VegaHistogram',
+          'app_analysis_charts_VegaScatterplot',
+          'app_analysis_charts_VegaStepChart',
+          'app_analysis_charts_VegaAreaChart'
 
   initialize: ->
     @bar = @app_analysis_charts_barChart
@@ -37,6 +43,13 @@ module.exports = class ChartsDir extends BaseDirective
     @bivariate = @app_analysis_charts_bivariateLineChart
     @normal = @app_analysis_charts_normalChart
     @pie = @app_analysis_charts_pieChart
+
+    @vegaBar = @app_analysis_charts_VegaBarChart
+    @vegaLine = @app_analysis_charts_VegaLineChart
+    @vegaHistogram = @app_analysis_charts_VegaHistogram
+    @vegaScatterplot = @app_analysis_charts_VegaScatterplot
+    @vegaStep = @app_analysis_charts_VegaStepChart
+    @vegaArea = @app_analysis_charts_VegaAreaChart
 
     @restrict = 'E'
     @template = "<div id='vis' class='graph-container' style='overflow:auto; height: 600px'></div>"
@@ -87,8 +100,9 @@ module.exports = class ChartsDir extends BaseDirective
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 
           # trellis chart is called differently
-          if scheme.name is 'Trellis Chart' and newChartData.labels
+          if scheme.name is 'Trellis Chart'#  and newChartData.labels
             @trellis.drawTrellis(width, height, data, _graph, labels, container)
+            # @vegaScatterplot.drawVegaScatterplot(width, height, data, _graph, labels, ranges)
           # standard charts
           else
             data = data.map (row) ->
@@ -137,5 +151,12 @@ module.exports = class ChartsDir extends BaseDirective
               when 'Normal Distribution'
                 @normal.drawNormalCurve(data, width, height, _graph)
               when 'Pie Chart'
+                # @vegaBar.drawVegaBarChart(width,height,data,_graph,labels,ranges)
+                # @vegaLine.drawVegaLineChart(width, height, data, _graph, labels, ranges)
+                # @vegaHistogram.drawVegaHistogram(width, height, data, _graph, labels, ranges)
+                # @vegaScatterplot.drawVegaScatterplot(width, height, data, _graph, labels, ranges)
+                # @vegaStep.drawVegaStepChart(width, height, data, _graph, labels, ranges)
+                # @vegaArea.drawVegaAreaChart(width, height, data, _graph, labels, ranges)
+
                 _graph = svg.append('g').attr("transform", "translate(300,250)").attr("id", "remove")
                 @pie.drawPie(data,width,height,_graph,true)
